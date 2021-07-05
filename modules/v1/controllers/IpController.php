@@ -47,4 +47,29 @@ class IpController extends ActiveController
 
         return $response;
     }
+
+    public function actionGetBySubnet()
+    {
+        $subnet = Yii::$app->request->get('subnet') ?? '';
+        $pattern = "/(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})-(\d{1,3})+/";
+
+        $ipBegin = preg_replace($pattern, "$1.$2.$3.", $subnet);
+        $rangeStart = preg_replace($pattern, "$4", $subnet);
+        $rangeEnd = preg_replace($pattern, "$5", $subnet);
+
+        preg_match($pattern, $subnet, $matches);
+
+        if (!empty($matches)) {
+            $ipAddresses = IpAddresses::find()
+                ->select('id')
+                ->where(['like', 'name', $ipBegin])
+                ->andFilterWhere(['between', "cast(substring_index(substring_index(name, '.', -1), '/', 1) as unsigned)", $rangeStart, $rangeEnd])
+                ->orderBy('id')
+                ->all();
+        } else {
+            $ipAddresses = new IpAddresses();
+        }
+
+        return $ipAddresses;
+    }
 }

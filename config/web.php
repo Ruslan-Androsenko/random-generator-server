@@ -67,6 +67,7 @@ $config = [
                 'GET <module:v1>/<controller:mac>/<action:getByIp>/<ip:>' => '<module>/<controller>/get-by-ip',
                 'GET <module:v1>/<controller:mac|ip>/<action:list>' => '<module>/<controller>/<action>',
                 'POST <module:v1>/<controller:mac>/<action:changeStatus>' => '<module>/<controller>/change-status',
+                'GET <module:v1>/<controller:ip>/<action:getBySubnet>' => '<module>/<controller>/get-by-subnet',
 
                 '<module:\w+>/<controller:\w+>/<action:\w+>'=>'<module>/<controller>/<action>',
                 '<module:\w+><controller:\w+>/<action:update|delete>/<id:\d+>' => '<module>/<controller>/<action>',
