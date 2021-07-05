@@ -1,16 +1,16 @@
 <?php
 
-namespace app\modules\api\controllers;
+namespace app\modules\v1\controllers;
 
 use Yii;
 use yii\base\BaseObject;
 use yii\rest\ActiveController;
-use app\modules\api\models\IpAddresses;
-use app\modules\api\models\MacAddresses;
+use app\modules\v1\models\IpAddresses;
+use app\modules\v1\models\MacAddresses;
 
 class MacController extends ActiveController
 {
-    public $modelClass = 'app\modules\api\models\MacAddresses';
+    public $modelClass = 'app\modules\v1\models\MacAddresses';
 
     public function actionGenerate()
     {

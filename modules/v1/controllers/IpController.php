@@ -1,15 +1,15 @@
 <?php
 
-namespace app\modules\api\controllers;
+namespace app\modules\v1\controllers;
 
 use Yii;
 use yii\base\BaseObject;
 use yii\rest\ActiveController;
-use app\modules\api\models\IpAddresses;
+use app\modules\v1\models\IpAddresses;
 
 class IpController extends ActiveController
 {
-    public $modelClass = 'app\modules\api\models\IpAddresses';
+    public $modelClass = 'app\modules\v1\models\IpAddresses';
 
     public function actionGetById($id) {
         $response = [
